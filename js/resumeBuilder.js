@@ -1,6 +1,7 @@
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
+
 var bio = {
 	"name" : "Alex Hanson",
 	"role" : "Environmental/Data Scientist",
@@ -11,9 +12,9 @@ var bio = {
 		"location" : "Beaverton, Oregon"
 	},
 	"welcomeMessage" : "Thank you for visiting my resume page.  On this page you will find my education, work experience, and skills as well as link to my programming portfolio.",
-	"skills" : ["Environmental Risk Assessment", "Data Analysis", "Environmental Sampling", "Technical Report Writing", "Programming(Python, HTML, CSS, JavaScript)", "Group Facilitation", "Training"],
+	"skills" : ["Environmental Risk Assessment", "Data Analysis", "Technical Report Writing", "Environmental Sampling", "Programming(Python, HTML, CSS, JavaScript)"],
 	"headshot" : "images/me.jpg"
-}
+};
 
 var work_experience = {
 	"jobs": [
@@ -38,6 +39,7 @@ var work_experience = {
 			"location" : "Portland, Oregon",
 			"description" : "Responsible for storm water, stream and lake sampling along with laboratory analyses and standards preparation."
 		},
+	],
 	"volunteer": [
 		{
 			"organization": "Junior Youth Empowerment Program",
@@ -45,7 +47,7 @@ var work_experience = {
 			"dates" : "2011-2015",
 			"location" : "Beaverton, Oregon",
 			"description" : "Worked with a service-based group of youth and middle schoolers to help them understand their capacity to better their neighborhoods, their own lives and contribute to community life."
-		}
+		},
 		{
 			"organization": "Baha'i World Centre",
 			"title" :  "Office Manager/Surveyor",
@@ -61,11 +63,11 @@ var work_experience = {
 			"description" : "Worked with education in rural villages regarding erosion control methods.  In addition, provided moral education for children and engaged in community development training with adults."
 		}
 	]
-}
+};
 
 var education = {
-	"schools" =[
-		 {
+	"schools" : [
+		{
 			"name": "Western Washington University",
 			"degree": "BS",
 			"majors": ["Environmental Science: Ecotoxicology", "Chemistry - minor"],
@@ -75,42 +77,50 @@ var education = {
 		},
 	],
 	"onlineCourses": [
-		{"school": "Udacity",
+		{
+		"school": "Udacity",
 		"dates": "2015",
 		"title" : "Intro to Computer Science",
 		"url" : "https://www.udacity.com/course/viewer#!/c-cs101"
 		},
-		{"school": "Udacity",
+		{
+		"school": "Udacity",
 		"dates": "2015",
 		"title" : "How to Use Git and Github",
 		"url" : "https://www.udacity.com/course/viewer#!/c-ud775"
 		},
-		{"school": "Udacity",
+		{
+		"school": "Udacity",
 		"dates": "2015",
 		"title" : "Linux Commands Line Basics",
 		"url" : "https://www.udacity.com/course/viewer#!/c-ud595"
 		},
-		{"school": "Udacity",
+		{
+		"school": "Udacity",
 		"dates": "2015",
 		"title" : "Programming Foundations with Python",
 		"url" : "https://www.udacity.com/course/viewer#!/c-ud036"
 		},
-		{"school": "Udacity",
+		{
+		"school": "Udacity",
 		"dates": "2016",
 		"title" : "Intro to Data Analysis",
 		"url" : "https://www.udacity.com/course/viewer#!/c-ud170"
 		},
-		{"school": "Udacity",
+		{
+		"school": "Udacity",
 		"dates": "2016",
 		"title" : "Writing READMEs",
 		"url" : "https://www.udacity.com/course/viewer#!/c-ud777"
 		},
-		{"school": "Udacity",
+		{
+		"school": "Udacity",
 		"dates": "2016",
 		"title" : "Intro to HTML and CSS",
 		"url" : "https://www.udacity.com/course/viewer#!/c-ud304"
 		},
-		{"school": "Udacity",
+		{
+		"school": "Udacity",
 		"dates": "2016",
 		"title" : "JavaScript Basics",
 		"url" : "https://www.udacity.com/course/viewer#!/c-ud804"
@@ -151,4 +161,24 @@ var projects = {
 			"images" : []
 		}
 	]
-}
+};
+
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
+
+if(bio.skills.length > 0) {
+	$("#header").append(HTMLskillsStart);
+	var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+	$("#skills").append(formattedSkill);
+	var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+	$("#skills").append(formattedSkill);
+	var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+	$("#skills").append(formattedSkill);
+	var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+	$("#skills").append(formattedSkill);
+	var formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
+	$("#skills").append(formattedSkill);
+};
