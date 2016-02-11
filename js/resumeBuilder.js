@@ -12,11 +12,11 @@ var bio = {
 		"location" : "Beaverton, Oregon"
 	},
 	"welcomeMessage" : "Thank you for visiting my resume page.  On this page you will find my education, work experience, and skills as well as link to my programming portfolio.",
-	"skills" : ["Environmental Risk Assessment", "Data Analysis", "Technical Report Writing", "Environmental Sampling", "Programming(Python, HTML, CSS, JavaScript)"],
+	"skills" : ["Environmental Risk Assessment", "Data Science/Analysis", "Technical Report Writing", "Environmental Sampling", "Front-End Development(Python, HTML, CSS, JS)"],
 	"headshot" : "images/me.jpg"
 };
 
-var work_experience = {
+var work = {
 	"jobs": [
 		{
 			"employer" : "Northwest Baha'i Regional Training Institute",
@@ -26,7 +26,7 @@ var work_experience = {
 			"description" : "Responsible for development, training and oversight of a service-based program for teams of young adults; Coordination of community building resource training program for Oregon/Washington."
 		},
 		{
-			"employer" : "MWH Global Inc.,",
+			"employer" : "MWH Global Inc.",
 			"title" : "Associate Risk Assessor/Environmental Scientist",
 			"dates" : "2007 - 2012",
 			"location" : "Portland, Oregon",
@@ -182,3 +182,16 @@ if(bio.skills.length > 0) {
 	var formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
 	$("#skills").append(formattedSkill);
 };
+
+for(job in work.jobs){
+	$("#workExperience").append(HTMLworkStart);
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+	var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+	var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+	var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+	$(".work-entry:last").append(formattedEmployer + formattedTitle);
+	$(".work-entry:last").append(formattedDates);
+	$(".work-entry:last").append(formattedLocation);
+	$(".work-entry:last").append(formattedDescription)
+}
