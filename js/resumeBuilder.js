@@ -208,3 +208,19 @@ function inName() {
 }
 
 $("#main").append(internationalizeButton);
+
+projects.display = function() {
+	for(project in projects.projects){
+		$("#projects").append(HTMLprojectStart);
+		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+		var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+		var formattedImages = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+		$(".project-entry:last").append(formattedTitle);
+		$(".project-entry:last").append(formattedDates);
+		$(".project-entry:last").append(formattedDescription);
+		$(".project-entry:last").append(formattedImages);
+	}
+};
+
+projects.display();
