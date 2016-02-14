@@ -224,3 +224,5 @@ projects.display = function() {
 };
 
 projects.display();
+
+$("#mapDiv").append(googleMap);
