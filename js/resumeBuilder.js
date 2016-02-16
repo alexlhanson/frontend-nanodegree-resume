@@ -1,7 +1,8 @@
 /*
-This is empty on purpose! Your code to build the resume will go here.
- */
+This file is for entering data to be replaced in functions filling in the website.
+*/
 
+//The bio object is for contact and personal information
 var bio = {
 	"name" : "Alex Hanson",
 	"role" : "Environmental/Data Scientist",
@@ -66,16 +67,14 @@ var work = {
 };
 
 var education = {
-	"schools" : [
-		{
-			"name": "Western Washington University",
-			"degree": "BS",
-			"majors": ["Environmental Science: Ecotoxicology", "Chemistry - minor"],
-			"dates": "2006",
-			"location": "Bellingham, Washington",
-			"url" : "http://www.wwu.edu/"
-		},
-	],
+	"schools" : {
+		"name": "Western Washington University",
+		"degree": "Bachelors of Science",
+		"majors": ["Environmental Science: Ecotoxicology", " Chemistry - minor"],
+		"dates": "2006",
+		"location": "Bellingham, Washington",
+		"url" : "http://www.wwu.edu/"
+	},
 	"onlineCourses": [
 		{
 		"school": "Udacity",
@@ -163,11 +162,14 @@ var projects = {
 	]
 };
 
+
+
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
+
 
 if(bio.skills.length > 0) {
 	$("#header").append(HTMLskillsStart);
@@ -182,7 +184,24 @@ if(bio.skills.length > 0) {
 	var formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
 	$("#skills").append(formattedSkill);
 };
-function displayWork(){
+
+education.schools.display = function() {
+	$("#education").append(HTMLschoolStart);
+	var formattedName = HTMLschoolName.replace("%data%", education.schools.name);
+	var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools.degree);
+	var formattedDates = HTMLschoolDates.replace("%data%", education.schools.dates);
+	var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools.location);
+	var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools.majors);
+	$(".education-entry:last").append(formattedName);
+	$(".education-entry:last").append(formattedDegree);
+	$(".education-entry:last").append(formattedDates);
+	$(".education-entry:last").append(formattedLocation);
+	$(".education-entry:last").append(formattedMajor)
+};
+
+education.schools.display();
+
+work.display = function() {
 	for(job in work.jobs){
 		$("#workExperience").append(HTMLworkStart);
 		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -197,17 +216,7 @@ function displayWork(){
 	}
 }
 
-displayWork();
-
-function inName() {
-    var names = bio.name.split(" ");
-    names[0] = names[0].slice(0,1).toUpperCase() + names[0].slice(1).toLowerCase();
-    names[1] = names[1].toUpperCase();
-    var finalName = names.join(" ");
-    return finalName;
-}
-
-$("#main").append(internationalizeButton);
+work.display();
 
 projects.display = function() {
 	for(project in projects.projects){
@@ -224,5 +233,17 @@ projects.display = function() {
 };
 
 projects.display();
+
+//Internationalize the name to make the last name UPPER case
+function inName() {
+    var names = bio.name.split(" ");
+    names[0] = names[0].slice(0,1).toUpperCase() + names[0].slice(1).toLowerCase();
+    names[1] = names[1].toUpperCase();
+    var finalName = names.join(" ");
+    return finalName;
+}
+
+$("#main").append(internationalizeButton);
+
 
 $("#mapDiv").append(googleMap);
